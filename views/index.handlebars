@@ -1,0 +1,54 @@
+<h1>Burgers!</h1>
+
+<table>
+  <tr>
+    <td>
+      <h2>Burgers that have not been devoured!</h2>
+    </td>
+    <td></td>
+    <td>
+      <h2>Burgers that are devoured!</h2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        {{#each burgers}}
+          {{#unless isDevoured}}
+            {{> burger/burger-block isDevoured=true}}
+          {{/unless}}
+        {{/each}}
+      </ul>
+    </td>
+    <td>
+      <img src="/assets/img/burger2.jpg" alt="Image of a yummy burger" class="image-formatter">
+    </td>
+    <td>
+      <ul>
+        {{#each burgers}}
+          {{#if isDevoured}}
+            {{> burger/burger-block isDevoured=false}}
+          {{/if}}
+        {{/each}}
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="bur">Burger Name:</label>
+    <input type="text" id="bur" name="burger_name">
+  </div>
+
+  <div class="form-group">
+    <label for="dev">Devour?</label><br>
+    <input type="radio" name="isDevoured" value="1" checked> Devour!<br>
+    <input type="radio" name="isDevoured" value="0"> Wait, wait, wait
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
